@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Playbook — Māori Tech Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cacao: #3B2A1A;
+    --sand: #F2EBE0;
+    --sage: #7A8C6E;
+    --warm-white: #FAF7F2;
+    --muted: #9B8B7A;
+    --card: #FFFFFF;
+    --border: #E8DDD0;
+    --accent: #C4956A;
+  }
+
+  body {
+    background: var(--warm-white);
+    color: var(--cacao);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--cacao);
+    padding: 64px 24px 56px;
+    text-align: center;
+  }
+
+  .hero-inner { max-width: 480px; margin: 0 auto; }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 9vw, 50px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--sand);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #C4B5A5;
+    margin-bottom: 8px;
+  }
+
+  .proof {
+    display: inline-block;
+    margin-top: 28px;
+    background: #FFFFFF10;
+    border: 1px solid #FFFFFF20;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--sand);
+    font-weight: 500;
+  }
+
+  .proof span { color: var(--accent); }
+
+  /* PRINCIPLE */
+  .principle {
+    background: var(--accent);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .principle-inner { max-width: 480px; margin: 0 auto; }
+
+  .principle p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #FFFFFF;
+    line-height: 1.4;
+  }
+
+  .principle small {
+    display: block;
+    margin-top: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #FFFFFF99;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* PHASES */
+  .phases {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .phase-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 16px;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .phase-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  .phase-title-wrap {}
+
+  .phase-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 3px;
+  }
+
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cacao);
+  }
+
+  .phase-question {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 14px;
+    padding-left: 56px;
+  }
+
+  .phase-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6B5B4E;
+    padding-left: 56px;
+  }
+
+  .phase-tip {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--sand);
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--cacao);
+    margin-left: 56px;
+  }
+
+  .phase-tip strong {
+    color: var(--sage);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* TOOLS */
+  .tools {
+    background: var(--sand);
+    padding: 48px 24px;
+  }
+
+  .tools-inner { max-width: 480px; margin: 0 auto; }
+
+  .tools h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .tools > .tools-inner > p {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .tool-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tool-row:last-child { border-bottom: none; }
+
+  .tool-icon {
+    font-size: 22px;
+    width: 40px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .tool-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 3px;
+  }
+
+  .tool-desc {
+    font-size: 13px;
+    color: #7A6A5A;
+    line-height: 1.5;
+  }
+
+  /* SESSION */
+  .session {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .session h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 8px;
+  }
+
+  .session > p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .prompt-box {
+    background: var(--cacao);
+    border-radius: 14px;
+    padding: 22px 20px;
+    margin-bottom: 16px;
+  }
+
+  .prompt-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .prompt-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--sand);
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--cacao);
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .footer-inner { max-width: 480px; margin: 0 auto; }
+
+  .footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sand);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .footer h2 em { font-style: italic; color: var(--accent); }
+
+  .footer p {
+    font-size: 14px;
+    color: #C4B5A5;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.88; }
+
+  .cta-btn.outline {
+    background: transparent;
+    border: 1px solid #FFFFFF40;
+    color: var(--sand);
+    font-size: 14px;
+    padding: 14px 28px;
+  }
+
+  .handle {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #9B8B7A;
+  }
+
+  .handle span { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">Free — Māori Tech Builder</div>
+    <h1>The AI<br><em>Playbook</em></h1>
+    <p>The exact method I used to build 3 live apps in 7 days. On my phone. No coding background.</p>
+    <p>Architecture before code. Always.</p>
+    <div class="proof">🤖 <span>3 apps · 7 days · on my phone</span> · yours free</div>
+  </div>
+</div>
+
+<div class="principle">
+  <div class="principle-inner">
+    <p>"Most people start building too early. This method forces the right thinking first. The code comes last."</p>
+    <small>The core principle</small>
+  </div>
+</div>
+
+<div class="phases">
+  <div class="section-label">The 6 phases</div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase One</div>
+        <div class="phase-title">Assess</div>
+      </div>
+    </div>
+    <div class="phase-question">Is this worth building?</div>
+    <div class="phase-desc">Before writing a single line of code, run your idea through the AI Boardroom. A panel of 10 expert perspectives — product, tech, finance, culture, legal — all in one Claude prompt. They challenge your assumptions, identify blind spots, and tell you whether to build or stop.</div>
+    <div class="phase-tip">
+      <strong>The test</strong>
+      If the Boardroom can't clearly articulate the problem and who experiences it — the idea isn't ready. Do not proceed.
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase Two</div>
+        <div class="phase-title">Architect</div>
+      </div>
+    </div>
+    <div class="phase-question">What exactly are we building?</div>
+    <div class="phase-desc">Define every module, every user type, every permission — before touching any code. Ask Claude to act as your Product Architect. Strip the MVP to the essentials. Defer everything else.</div>
+    <div class="phase-tip">
+      <strong>The test</strong>
+      Can you describe every screen in the app without opening a code editor? If yes — proceed.
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase Three</div>
+        <div class="phase-title">Specify</div>
+      </div>
+    </div>
+    <div class="phase-question">What does the data look like?</div>
+    <div class="phase-desc">This is the most important phase. Map your data model — every object, every field, every relationship. Then produce the Build Brief: a single document that contains everything Claude needs to build your app in any future session without re-explaining context.</div>
+    <div class="phase-tip">
+      <strong>The test</strong>
+      Could a developer who has never seen your product pick up the Build Brief and know exactly what to build next?
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase Four</div>
+        <div class="phase-title">Build</div>
+      </div>
+    </div>
+    <div class="phase-question">Write the code</div>
+    <div class="phase-desc">Claude writes everything. One file — index.html — containing all your HTML, CSS, and React. No build tools, no terminal, no laptop needed. Start with login, then the dashboard shell, then one complete working module. Test on your phone before adding more.</div>
+    <div class="phase-tip">
+      <strong>The test</strong>
+      Does it load on a mobile phone and show real data from the database?
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">5</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase Five</div>
+        <div class="phase-title">Deploy</div>
+      </div>
+    </div>
+    <div class="phase-question">Get it live</div>
+    <div class="phase-desc">Upload your index.html to GitHub. Connect GitHub to Vercel. Your app is live on the internet in 30 seconds — for free. Every update you make deploys automatically. No server, no hosting costs, no DevOps.</div>
+    <div class="phase-tip">
+      <strong>The test</strong>
+      Does the app load at its public URL on a phone you've never used before, with no errors?
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">6</div>
+      <div class="phase-title-wrap">
+        <div class="phase-label">Phase Six</div>
+        <div class="phase-title">Iterate</div>
+      </div>
+    </div>
+    <div class="phase-question">Add features without breaking things</div>
+    <div class="phase-desc">Every new feature starts with one clear sentence describing what you want. Give Claude the Build Brief, the current file, and that sentence. Build the new piece in isolation first. Test it. Then integrate. Update the Build Brief after every session.</div>
+    <div class="phase-tip">
+      <strong>The loop</strong>
+      New feature → back to Phase 3. New product → back to Phase 1.
+    </div>
+  </div>
+</div>
+
+<div class="tools">
+  <div class="tools-inner">
+    <h2>The 4 tools</h2>
+    <p>Everything you need. All free to start.</p>
+
+    <div class="tool-row">
+      <div class="tool-icon">🧠</div>
+      <div>
+        <div class="tool-name">Claude — claude.ai</div>
+        <div class="tool-desc">Your AI architect, developer, and advisor. Describe your idea in plain English — Claude does the rest.</div>
+      </div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-icon">🐙</div>
+      <div>
+        <div class="tool-name">GitHub — github.com</div>
+        <div class="tool-desc">Stores your code file. Think of it as the folder that holds your app. Upload, commit, done.</div>
+      </div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-icon">▲</div>
+      <div>
+        <div class="tool-name">Vercel — vercel.com</div>
+        <div class="tool-desc">Turns your GitHub file into a live website. Deploys in 30 seconds. Every update goes live automatically.</div>
+      </div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-icon">🗄️</div>
+      <div>
+        <div class="tool-name">Supabase — supabase.com</div>
+        <div class="tool-desc">Your database. Stores users, records, content — everything your app needs to remember. Claude connects to it for you.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="session">
+  <h2>How to start</h2>
+  <p>Copy this prompt. Paste it into a new Claude chat. Then describe your idea.</p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">The Boardroom Prompt</div>
+    <div class="prompt-text">"You are an AI Boardroom made up of world-class experts including a Product Strategist, Systems Architect, UX Designer, Software Engineer, Data & AI Specialist, Finance & Commercial Advisor, Marketing & Growth Advisor, Operations & Process Advisor, Legal & Privacy Advisor, and Cultural Advisor. Assess this idea as if we are deciding whether to invest time and money into building it. Do not simply agree. Challenge weak assumptions. Identify blind spots. Keep the discussion practical."</div>
+  </div>
+
+  <div class="prompt-box">
+    <div class="prompt-label">The Build Session Prompt</div>
+    <div class="prompt-text">"This is the Build Brief for [your product name]. I need you to act as the lead developer. Read the brief fully. Then I will tell you what I want to build today. Do not start coding until we agree on scope."</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <h2>Want to see it<br><em>in action?</em></h2>
+    <p>Follow along as I document every build — live, on my phone, showing the real process from idea to deployed app.</p>
+    <div class="btn-row">
+      <a href="https://tiktok.com/@maori_techbuilder" target="_blank" class="cta-btn">🤖 Follow @maori_techbuilder</a>
+      <a href="index.html" class="cta-btn outline">← Back to the 4 free tools</a>
+    </div>
+    <div class="handle">TikTok · <span>@maori_techbuilder</span></div>
+  </div>
+</div>
+
+</body>
+</html>
