@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 4 Free Apps — Māori Tech Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cacao: #3B2A1A;
+    --sand: #F2EBE0;
+    --sage: #7A8C6E;
+    --warm-white: #FAF7F2;
+    --muted: #9B8B7A;
+    --card: #FFFFFF;
+    --border: #E8DDD0;
+    --accent: #C4956A;
+  }
+
+  body {
+    background: var(--warm-white);
+    color: var(--cacao);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--cacao);
+    padding: 64px 24px 56px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 10vw, 54px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--sand);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #C4B5A5;
+    margin-bottom: 10px;
+  }
+
+  .proof {
+    display: inline-block;
+    margin-top: 32px;
+    background: #FFFFFF10;
+    border: 1px solid #FFFFFF20;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--sand);
+    font-weight: 500;
+  }
+
+  .proof span { color: var(--accent); }
+
+  /* SECTION */
+  .section {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  /* APP CARDS */
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .app-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .app-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    background: var(--sand);
+  }
+
+  .app-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cacao);
+  }
+
+  .app-role {
+    font-size: 12px;
+    color: var(--sage);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  .app-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6B5B4E;
+    margin-bottom: 18px;
+  }
+
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sage);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .app-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 480px;
+    margin: 0 auto 0;
+    padding: 0 24px;
+  }
+
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--sand);
+    padding: 48px 24px;
+  }
+
+  .how-inner {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .how h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .how > .how-inner > p {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 32px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .step-content strong {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cacao);
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: #7A6A5A;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--cacao);
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--sand);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .footer h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .footer p {
+    font-size: 14px;
+    color: #C4B5A5;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.88; }
+
+  .handle {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #9B8B7A;
+  }
+
+  .handle span { color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">Free Resource from Māori Tech Builder</div>
+    <h1>Build your first app.<br><em>For free.</em></h1>
+    <p>You don't need to know how to code.<br>You don't need a laptop. Just these 4 apps — and an idea.</p>
+    <p>I built 3 live apps in 7 days. On my phone.</p>
+    <div class="proof">🤖 <span>3 apps · 7 days · on my phone</span> · no coding</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The 4 apps you need</div>
+
+  <div class="app-card">
+    <div class="app-header">
+      <div class="app-icon">🧠</div>
+      <div>
+        <div class="app-name">Claude</div>
+        <div class="app-role">Your AI architect + developer</div>
+      </div>
+    </div>
+    <p class="app-desc">Describe your idea in plain English. Claude designs the app, writes all the code, and fixes problems — all through conversation. No technical knowledge needed.</p>
+    <a href="https://claude.ai" target="_blank" class="app-link">claude.ai — Free to start →</a>
+  </div>
+
+  <div class="app-card">
+    <div class="app-header">
+      <div class="app-icon">🐙</div>
+      <div>
+        <div class="app-name">GitHub</div>
+        <div class="app-role">Where your app lives</div>
+      </div>
+    </div>
+    <p class="app-desc">GitHub stores your code files. Think of it as the folder that holds your app. You upload the file Claude creates, and it's ready to go live. Free account is all you need.</p>
+    <a href="https://github.com" target="_blank" class="app-link">github.com — Free →</a>
+  </div>
+
+  <div class="app-card">
+    <div class="app-header">
+      <div class="app-icon">▲</div>
+      <div>
+        <div class="app-name">Vercel</div>
+        <div class="app-role">Makes it live on the internet</div>
+      </div>
+    </div>
+    <p class="app-desc">Vercel connects to your GitHub and turns your code into a real website anyone can visit. It deploys in 30 seconds — and every update goes live automatically.</p>
+    <a href="https://vercel.com" target="_blank" class="app-link">vercel.com — Free →</a>
+  </div>
+
+  <div class="app-card">
+    <div class="app-header">
+      <div class="app-icon">🗄️</div>
+      <div>
+        <div class="app-name">Supabase</div>
+        <div class="app-role">Your database — where data is stored</div>
+      </div>
+    </div>
+    <p class="app-desc">Supabase stores everything your app needs — users, records, content. It's a real database that works like a spreadsheet in the cloud. Claude knows exactly how to connect to it.</p>
+    <a href="https://supabase.com" target="_blank" class="app-link">supabase.com — Free tier →</a>
+  </div>
+</div>
+
+<div class="how">
+  <div class="how-inner">
+    <h2>How it works</h2>
+    <p>Four tools. One idea. One day.</p>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Describe your idea to Claude</strong>
+        <p>Tell Claude what you want to build in plain English. It will ask the right questions and design the whole thing for you.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Claude writes the code</strong>
+        <p>You get one file back — index.html. That's your entire app. Copy it exactly as given.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Upload to GitHub</strong>
+        <p>Create a free repo and upload the file. Takes 2 minutes on your phone.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Connect Vercel — it goes live</strong>
+        <p>Link your GitHub repo to Vercel. Your app is live on the internet in 30 seconds.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Add Supabase for real data</strong>
+        <p>Want users to log in or save data? Claude will connect Supabase for you. Still free.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="background:#F2EBE0;padding:32px 24px;text-align:center;"><div style="max-width:480px;margin:0 auto;"><p style="font-family:DM Sans,sans-serif;font-size:13px;color:#9B8B7A;margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">FREE DOWNLOAD</p><a href="playbook.html" style="display:inline-flex;align-items:center;gap:8px;background:#3B2A1A;color:#F2EBE0;font-family:DM Sans,sans-serif;font-size:15px;font-weight:600;padding:16px 32px;border-radius:100px;text-decoration:none;">📖 Get The AI Playbook →</a><p style="margin-top:12px;font-size:12px;color:#9B8B7A;font-family:DM Sans,sans-serif;">The 6-phase method. The prompts. Everything.</p></div></div><div class="footer">
+  <div class="footer-inner">
+    <h2>Want the <em>full method?</em></h2>
+    <p>Follow along as I document the whole process — how I went from zero to 3 live apps in 7 days, on my phone, with no coding background.</p>
+    <a href="https://tiktok.com/@maori_techbuilder" target="_blank" class="cta-btn">
+      🤖 Follow @maori_techbuilder
+    </a>
+    <div class="handle">TikTok · <span>@maori_techbuilder</span></div>
+  </div>
+</div>
+
+</body>
+</html>
