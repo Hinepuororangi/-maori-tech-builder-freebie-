@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="mi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parikino Marae — Trustee Briefing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cacao: #3B2A1A;
+    --sand: #F2EBE0;
+    --sage: #7A8C6E;
+    --warm-white: #FAF7F2;
+    --muted: #9B8B7A;
+    --card: #FFFFFF;
+    --border: #E8DDD0;
+    --accent: #C4956A;
+  }
+
+  body {
+    background: var(--warm-white);
+    color: var(--cacao);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--cacao);
+    padding: 48px 24px 40px;
+  }
+
+  .header-inner { max-width: 480px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--sand);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: #C4B5A5;
+    line-height: 1.6;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    background: #FFFFFF15;
+    border: 1px solid #FFFFFF20;
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--sand);
+    font-weight: 500;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 36px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .section p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6B5B4E;
+    margin-bottom: 12px;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--cacao);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .highlight p {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--sand);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .highlight span {
+    color: var(--accent);
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* DETAIL ROWS */
+  .detail-row {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-icon {
+    font-size: 18px;
+    width: 28px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .detail-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .detail-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cacao);
+  }
+
+  .detail-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* STEP LIST */
+  .step-list { margin: 16px 0; }
+
+  .step-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .step-content strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cacao);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* APP INSTALL */
+  .install-box {
+    background: var(--sand);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .install-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 14px;
+  }
+
+  .install-os {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+    margin-top: 14px;
+  }
+
+  .install-os:first-of-type { margin-top: 0; }
+
+  .install-step {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+  }
+
+  .install-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 16px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .install-text {
+    font-size: 13px;
+    color: #6B5B4E;
+    line-height: 1.5;
+  }
+
+  .url-box {
+    background: var(--cacao);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  /* FUNDING */
+  .funding-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+
+  .funding-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--cacao);
+    margin-bottom: 4px;
+  }
+
+  .funding-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ASK */
+  .ask {
+    background: var(--accent);
+    padding: 36px 24px;
+  }
+
+  .ask-inner { max-width: 480px; margin: 0 auto; }
+
+  .ask h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .ask h2 em { font-style: italic; }
+
+  .ask p {
+    font-size: 14px;
+    color: #FFFFFF;
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .ask-items {
+    margin-top: 20px;
+  }
+
+  .ask-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .ask-tick {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .ask-text {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--cacao);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-inner { max-width: 480px; margin: 0 auto; }
+
+  .footer p {
+    font-size: 13px;
+    color: #9B8B7A;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .footer strong {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="eyebrow">Trustee Briefing — Confidential</div>
+    <h1>Parikino Marae<br><em>Digital Capability</em></h1>
+    <p class="header-sub">A proposal to host Aotearoa's first AI app-building wānanga for rangatahi — at our marae, this school holidays.</p>
+    <div class="meta-row">
+      <div class="meta-pill">📅 School Holidays</div>
+      <div class="meta-pill">📍 Parikino Marae</div>
+      <div class="meta-pill">💰 Free</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The context</div>
+  <h2>Our marae is already connected. Now what?</h2>
+  <p>Te Puni Kōkiri has funded broadband connectivity to over 75% of eligible marae across Aotearoa — including ours. The infrastructure is in. The WiFi is on.</p>
+  <p>But there is no funded programme teaching our whānau what to do with that connection. Training is explicitly out of scope for the current programme.</p>
+  <div class="highlight">
+    <p>"The gap is not infrastructure. <span>The gap is capability.</span> What happens when a connected marae wants to build something?"</p>
+  </div>
+  <p>This proposal is about filling that gap — starting here, at Parikino.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">What we've already built</div>
+  <h2>Parikino OS is live</h2>
+  <p>As your Trustee and a Māori Tech Builder, I have already built a real governance app for our marae. It is live, it is free, and it runs on any phone.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-num">7</span>
+      <span class="stat-label">Days to build 3 live apps</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">$0</span>
+      <span class="stat-label">Cost to run — free forever</span>
+    </div>
+  </div>
+
+  <p>Parikino OS includes a governance dashboard, meeting records, skills register, bookings, and an AI Boardroom where trustees can get expert advice on any marae question.</p>
+
+  <div class="install-box">
+    <div class="install-title">Install Parikino OS on your phone</div>
+
+    <div class="url-box">parikino-os-v2.vercel.app</div>
+
+    <div class="install-os">Android (Chrome)</div>
+    <div class="install-step"><div class="install-num">1</div><div class="install-text">Open the URL above in Chrome</div></div>
+    <div class="install-step"><div class="install-num">2</div><div class="install-text">Tap ⋮ menu → Add to Home Screen</div></div>
+    <div class="install-step"><div class="install-num">3</div><div class="install-text">Tap Add — it installs like a real app</div></div>
+
+    <div class="install-os">iPhone (Safari only)</div>
+    <div class="install-step"><div class="install-num">1</div><div class="install-text">Open the URL above in Safari</div></div>
+    <div class="install-step"><div class="install-num">2</div><div class="install-text">Tap Share □↑ → Add to Home Screen</div></div>
+    <div class="install-step"><div class="install-num">3</div><div class="install-text">Tap Add — done</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The proposal</div>
+  <h2>Kupu AI — A free wānanga for rangatahi</h2>
+  <p>We want to host a one-day wānanga at Parikino Marae during the school holidays for rangatahi aged 13–17.</p>
+
+  <div class="detail-row">
+    <div class="detail-icon">📅</div>
+    <div>
+      <div class="detail-label">When</div>
+      <div class="detail-value">School Holidays — Date TBC</div>
+      <div class="detail-note">11am – 4pm, shared lunch</div>
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-icon">👥</div>
+    <div>
+      <div class="detail-label">Who</div>
+      <div class="detail-value">Rangatahi aged 13–17</div>
+      <div class="detail-note">Community members, whānau of trustees welcome</div>
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-icon">⚡</div>
+    <div>
+      <div class="detail-label">Special Guest</div>
+      <div class="detail-value">Armi Robinson</div>
+      <div class="detail-note">BlockStackAI · The 7 Block Method</div>
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-icon">📱</div>
+    <div>
+      <div class="detail-label">What they need</div>
+      <div class="detail-value">Just a phone and an idea</div>
+      <div class="detail-note">No laptop, no coding experience required</div>
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-icon">💰</div>
+    <div>
+      <div class="detail-label">Cost to marae</div>
+      <div class="detail-value">Nothing</div>
+      <div class="detail-note">Facilitated by Kelly. Shared lunch — bring a plate.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The day</div>
+  <h2>What rangatahi will do</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Find a real problem</strong>
+        <p>Rangatahi identify something that frustrates them at the marae, in their community, or in daily life.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Design before building</strong>
+        <p>They plan their app — what it does, who uses it, what it shows — before touching any code.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Build it with AI</strong>
+        <p>Using Claude AI on their phone, they generate a real working app. No coding knowledge needed.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Present and win</strong>
+        <p>Teams present their live app. Judged on: real problem, working app, marae ready.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The bigger picture</div>
+  <h2>This is the pilot for something larger</h2>
+  <p>Parikino Marae is uniquely positioned to lead on digital capability for marae across Aotearoa. We already have:</p>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">✦</div>
+      <div class="step-content">
+        <strong>A live governance app built for our marae</strong>
+        <p>Parikino OS is proof the method works here.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">✦</div>
+      <div class="step-content">
+        <strong>A Trustee who is also a Māori Tech Builder</strong>
+        <p>Kelly brings the method, the credibility, and the network.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">✦</div>
+      <div class="step-content">
+        <strong>TPK connectivity already funded</strong>
+        <p>The infrastructure is in place. We provide the capability layer.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>After the pilot, this becomes the evidence for a funded programme — delivered to marae across the motu.</p>
+
+  <div class="highlight">
+    <p>Funding targets: <span>Te Puni Kōkiri · He Poutama Rangatahi · Tū Māia · Māori Digital Economy initiatives</span></p>
+  </div>
+</div>
+
+<div class="ask">
+  <div class="ask-inner">
+    <h2>What we're asking<br><em>from trustees</em></h2>
+    <p>We are not asking for money. We are asking for three things:</p>
+    <div class="ask-items">
+      <div class="ask-item">
+        <div class="ask-tick">✅</div>
+        <div class="ask-text">Approval to host Kupu AI wānanga at Parikino Marae during school holidays</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-tick">✅</div>
+        <div class="ask-text">Use of the whare for the day — 11am to 4pm</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-tick">✅</div>
+        <div class="ask-text">Help spreading the word to whānau and rangatahi in our community</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <p>Prepared by <strong>Kelly</strong> — Trustee, Parikino Marae Reservation Trust</p>
+    <p>Māori Tech Builder · <strong>@maori_techbuilder</strong></p>
+    <p style="margin-top:12px; font-size:11px; opacity:0.6;">Confidential — for trustee review only</p>
+  </div>
+</div>
+
+</body>
+</html>
